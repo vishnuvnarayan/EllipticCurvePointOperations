@@ -1,3 +1,10 @@
+/**
+    BigInteger.cpp
+    BigInteger class (member definitions) to manipulate arbitrary-length signed
+integers.
+    Author: Vishnu V Narayan
+**/
+
 #include "BigInteger.hpp"
 #include <algorithm>
 #include <climits>

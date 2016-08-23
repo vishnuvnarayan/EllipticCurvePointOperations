@@ -1,3 +1,9 @@
+/**
+    ECPO.cpp
+    Elliptic Curve Point Operations class (member definitions).
+    Author: Vishnu V Narayan
+**/
+
 #pragma once
 
 #include "BigInteger.hpp"

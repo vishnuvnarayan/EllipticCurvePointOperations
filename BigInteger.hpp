@@ -1,3 +1,10 @@
+/**
+    BigInteger.hpp
+    BigInteger class (header file) to manipulate arbitrary-length signed
+integers.
+    Author: Vishnu V Narayan
+**/
+
 #pragma once
 
 #include <climits>
