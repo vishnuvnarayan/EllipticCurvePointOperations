@@ -23,6 +23,8 @@
               The entire implementation, from start to finish, was written from scratch for this project, and various choices had to be made in the process. This page lists some of these decisions, and contains justifications for the choices that were made during implementation.
               <br>
               <ul>
+              <li> All source code was formatted with clang-format, a source code formatting tool from the Clang project.<br><br>
+              <li> The use of fixed-width integer types restricts the project to C++11 and later compilers, but greatly improves efficiency and eliminates the requirement of type or width checking.<br><br>
               <li> All arithmetic operations on BigInteger objects emulate the behaviour of the int datatype in the ISO C++ standard. This decision, while disadvantageous in some respects, was made because this behaviour is intuitive to most users of the language. Consider, for example, 
                    that in nearly all computing systems, the quotient q and the remainder r of integer division of a by n satisfy a = nq + r. The C++ standard uses truncated division, where the quotient is defined by truncation of (a/n) and thus the remainder has the same sign as the dividend. 
                    Since the mod operator % returns the remainder from division, we cannot use this remainder to represent least positive residues. Another function (BI_Residue) was thus included to get least positive residues instead of overloading the % operator, in the interest of maintaining

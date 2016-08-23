@@ -45,7 +45,7 @@
               
               <b>Compilation Instructions:</b>
               <br>
-              g++ is required for compilation. There are several versions of g++ available for different operating systems: the GCC for Linux-based systems, MinGW for Windows, and the LLVM (as a part of Xcode) for Macintosh.<br><br>
+              The g++ compiler (supporting C++11) is required for compilation. There are several versions of g++ available for different operating systems: the GCC for Linux-based systems, MinGW for Windows, and the LLVM (as a part of Xcode) for Macintosh.<br><br>
               <ul>
               <li>To use the BigInteger class in your program <i>example.cpp</i>, include the BigInteger.hpp file at the top of your code:<br>
               <pre>
@@ -53,8 +53,8 @@
               </pre>
               To compile your program with g++, use the commands (for windows and linux/macintosh respectively):<br>
               <pre>
-                > g++ example.cpp (path)\BigInteger.cpp -o example.exe
-                $ g++ example.cpp (path)\BigInteger.cpp -o example.out
+                > g++ -std=c++11 example.cpp (path)\BigInteger.cpp -o example.exe
+                $ g++ -std=c++11 example.cpp (path)\BigInteger.cpp -o example.out
               </pre>
               <li>To use the EC_Point and EC_Curve classes, include both header files in your code:<br>
               <pre>
@@ -63,8 +63,8 @@
               </pre>
               To compile your program with g++, use the commands (for windows and linux/macintosh respectively):<br>
               <pre>
-                > g++ example.cpp (path)\BigInteger.cpp (path)\ECPO.cpp -o example.exe
-                $ g++ example.cpp (path)\BigInteger.cpp (path)\ECPO.cpp -o example.out
+                > g++ -std=c++11 example.cpp (path)\BigInteger.cpp (path)\ECPO.cpp -o example.exe
+                $ g++ -std=c++11 example.cpp (path)\BigInteger.cpp (path)\ECPO.cpp -o example.out
               </pre>
               </ul>
               
