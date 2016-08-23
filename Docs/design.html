@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<title>Design Details - Point Multiplication on Elliptic Curves</title>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="Files/style.css" />
+</head>
+<body>
+<div id="mainContentArea">
+	<div id="contentBox">
+        <div id="title">Point Multiplication on Elliptic Curves</div>
+        
+        <div id="linkGroup">
+            <div class="link"><a href="about.html">About</a></div>
+            <div class="link"><a href="reference.html">Reference</a></div>
+            <div class="link" id="linkact">Design Details</div>
+        </div>
+        
+        <div id="blueBox"> 
+          <div id="header"></div>
+          <div class="contentTitle">Point Multiplication on Elliptic Curves - Design Details</div>
+            <div class="pageContent">
+              The entire implementation, from start to finish, was written from scratch for this project, and various choices had to be made in the process. This page lists some of these decisions, and contains justifications for the choices that were made during implementation.
+              <br>
+              <ul>
+              <li> All arithmetic operations on BigInteger objects emulate the behaviour of the int datatype in the ISO C++ standard. This decision, while disadvantageous in some respects, was made because this behaviour is intuitive to most users of the language. Consider, for example, 
+                   that in nearly all computing systems, the quotient q and the remainder r of integer division of a by n satisfy a = nq + r. The C++ standard uses truncated division, where the quotient is defined by truncation of (a/n) and thus the remainder has the same sign as the dividend. 
+                   Since the mod operator % returns the remainder from division, we cannot use this remainder to represent least positive residues. Another function (BI_Residue) was thus included to get least positive residues instead of overloading the % operator, in the interest of maintaining
+                   consistency with the behaviour of the int datatype.<br><br>
+              <li> Since multiplication of large integers is a frequently occurring elliptic curve operation, the Karatsuba fast-multiplication algorithm was chosen to be implemented. This algorithm runs in O(n<sup>lg(3)</sup>), where n is the number of bits in each operand and lg(3) = 1.585. This is significantly
+                   faster than the well-known O(n<sup>2</sup>) multiplication method. The Karatsuba algorithm recursively operates on subarrays of digits, switching to naive multiplication for some choice of subarray. This switch value was chosen to be n = 32, based on the average results 
+                   obtained below (time in seconds). For smaller values of n, the difference was negligible.<br><br>
+                   <img src="Files\img1.png" style="float:center;width:35%"><br><br>
+              <li> The digits of the integer inside the BigInteger class are stored in a vector of "int" variables. The vector container in C++ performs its own memory management, while also being fast and efficient at the same time. The digits are stored in base 10^6 as this greatly simplifies
+                   reading and displaying the contained value, while also being storage-efficient. Almost all modern compilers treat the signed int datatype and the signed long long int datatype as 32 and 64 bits wide, so 10^6 is the largest power-of-10 base for which the Karatsuba algorithm cannot
+                   overflow when internal operations use a signed 64-bit long long int. The base can also be easily modified to any other value to suit the user's convenience.<br><br>
+              <li> Compound assignment operators like += take a const reference argument so as to match the standard operators, but given the mechanics of the BigInteger class, we require in a few cases (such as the case where both operands are the same) to make a copy of the argument. A copy of
+                   the argument is thus made internally anyway, since the cost of copying the BigInteger is negligible in the cost of the operation.<br><br>
+              <li> The function to find modular multiplicative inverses (BI_ModInv), uses the Extended Euclidean Algorithm rather than finding the (p-2)<sup>nd</sup> power of the base (according to Fermat's little theorem), for two reasons: (1) the EEA
+                   returns 0 in the case where the inverse does not exist - this behaviour can be easily standardised, and (2) EEA is significantly (by approximately a factor of 3) faster as the modulus grows large:<br><br>
+                   <img src="Files\img2.png" style="float:center;width:40%"><br><br>
+              <li> The two point multiplication algorithms are implemented exactly as described in the Guide to Elliptic Curve Cryprography - this was the only comprehensive list available on the internet. The window-NAF method from the Guide is implemented in <i>preference</i> to the sliding-window-NAF method,
+                   as it is marginally simpler to code, and there is a negligible performance difference between the two methods according to the analysis in the book.<br><br>
+              </ul>
+            </div>
+            <div id="footer"></div>
+        </div>
+	</div>
+</div>
+</body>
+</html>

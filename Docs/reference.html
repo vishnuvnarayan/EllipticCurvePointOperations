@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<title>Reference - Point Multiplication on Elliptic Curves</title>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="Files/style.css" />
+</head>
+<body>
+<div id="mainContentArea">
+	<div id="contentBox">
+        <div id="title">Point Multiplication on Elliptic Curves</div>
+        
+        <div id="linkGroup">
+            <div class="link"><a href="about.html">About</a></div>
+            <div class="link" id="linkact">Reference</div>
+            <div class="link"><a href="design.html">Design Details</a></div>
+        </div>
+        
+        <div id="blueBox"> 
+          <div id="header"></div>
+          <div class="contentTitle">Point Multiplication on Elliptic Curves - Reference Manual</div>
+            <div class="pageContent">
+              
+              
+              <b>Classes:</b>
+              <table style="border:0px">
+                <tr> <td>BigInteger</td>    <td>&emsp;</td><td>This class implements arbitrarily long signed integer objects. The class overloads the following operators: the assignment operator, all relational operators, all arithmetic and compound arithmetic operators, and the pre- and post-increment and decrement operators, with behaviour exactly matching the behaviour of signed integers (the "int" datatype) in the current ISO/IEC 14882:2014(E) C++ standard. The class also provides several useful functions for other common integer operations.</td>
+                <tr> <td>EC_Point</td>      <td>&emsp;</td><td>This class implements points in <b>Z</b>&#10799;<b>Z</b> &#8746; {O}, where <b>Z</b> is the integers and O is the point at infinity. Objects of this class may (and are intended to) be used to represent points in the space <b>F</b><sub>p</sub>&#10799;<b>F</b><sub>p</sub> &#8746; {O}, where <b>F</b><sub>p</sub> is the finite field of order p, where p is prime.</td>
+                <tr> <td>EC_Curve</td>      <td>&emsp;</td><td>This class implements objects representing curves in <b>F</b><sub>p</sub>&#10799;<b>F</b><sub>p</sub> &#8746; {O}, corresponding to short Weierstrass equations of the form Y<sup>2</sup> = X<sup>3</sup> + AX + B, with nonzero discriminant 4A<sup>3</sup> + 27B<sup>2</sup>. The points on curves of this kind form a group under a special operation usually called point addition. The discrete logarithm problem is though to be hard in these groups, making them useful for cryptographic purposes. This class contains several useful functions for adding, doubling and multiplying points on specified elliptic curves.</td>
+              </table>
+              <br>
+              
+              <hr>
+              
+              <b>Files:</b>
+              <table style="border:0px">
+                <tr> <td>BigInteger.hpp</td>    <td>&emsp;</td><td>This header file contains the declarations for the class BigInteger.</td>
+                <tr> <td>BigInteger.cpp</td>    <td>&emsp;</td><td>This file contains the definitions for the class BigInteger.</td>
+                <tr> <td>ECPO.hpp</td>          <td>&emsp;</td><td>This header file contains the declarations for the classes EC_Point and EC_Curve.</td>
+                <tr> <td>ECPO.hpp</td>          <td>&emsp;</td><td>This file contains the definitions for the classes EC_Point and EC_Curve.</td>
+              </table>
+              <br>
+              
+              <hr>
+              
+              <b>Compilation Instructions:</b>
+              <br>
+              g++ is required for compilation. There are several versions of g++ available for different operating systems: the GCC for Linux-based systems, MinGW for Windows, and the LLVM (as a part of Xcode) for Macintosh.<br><br>
+              <ul>
+              <li>To use the BigInteger class in your program <i>example.cpp</i>, include the BigInteger.hpp file at the top of your code:<br>
+              <pre>
+                #include "(path)\BigInteger.hpp"
+              </pre>
+              To compile your program with g++, use the commands (for windows and linux/macintosh respectively):<br>
+              <pre>
+                > g++ example.cpp (path)\BigInteger.cpp -o example.exe
+                $ g++ example.cpp (path)\BigInteger.cpp -o example.out
+              </pre>
+              <li>To use the EC_Point and EC_Curve classes, include both header files in your code:<br>
+              <pre>
+                #include "(path)\BigInteger.hpp"
+                #include "(path)\ECPO.hpp"
+              </pre>
+              To compile your program with g++, use the commands (for windows and linux/macintosh respectively):<br>
+              <pre>
+                > g++ example.cpp (path)\BigInteger.cpp (path)\ECPO.cpp -o example.exe
+                $ g++ example.cpp (path)\BigInteger.cpp (path)\ECPO.cpp -o example.out
+              </pre>
+              </ul>
+              
+              <hr>
+              
+              <b>Class functions:</b>
+              <br><br><br>
+              <i>BigInteger</i>
+              <br><br>
+              <table border="1" cellpadding="10">
+                <tr> <td style="width: 340px;">BigInteger()<br>BigInteger( int x )<br>BigInteger( long long x )<br>BigInteger( const BigInteger&amp; x )<br>BigInteger( const std::string&amp; x )</td>    <td>Creates a new object. If a parameter x is passed, the value of the created object is equal to x. If a const string parameter is passed, the value is equal to the longest prefix of the passed string which matches the regular expression [+- ]*[0-9]*.</td>
+                <tr> <td>BigInteger&amp; operator=( int x )<br>BigInteger&amp; operator=( long long x )<br>BigInteger&amp; operator=( const BigInteger&amp; x )</td>    <td>Makes the value of the calling object equal to x.</td>
+                <tr> <td>friend std::istream&amp; operator>>( std::istream&amp;, BigInteger&amp; )<br>friend std::ostream&amp; operator&lt;&lt;( std::ostream&amp;, const BigInteger&amp; )</td>          <td>operator>> reads the integer value from the istream. operator&lt;&lt; writes the integer value to the ostream. Both operators behave like the corresponding integer operators.</td>
+                <tr> <td>bool operator&lt;( const BigInteger&amp; rhs ) const<br>bool operator&gt;( const BigInteger&amp; rhs ) const<br>bool operator&lt;=( const BigInteger&amp; rhs ) const<br>bool operator&gt;=( const BigInteger&amp; rhs ) const<br>bool operator==( const BigInteger&amp; rhs ) const<br>bool operator!=( const BigInteger&amp; rhs ) const<br>bool operator&lt;( const long long rhs ) const<br>bool operator&gt;( const long long rhs ) const<br>bool operator&lt;=( const long long rhs ) const<br>bool operator&gt;=( const long long rhs ) const<br>bool operator==( const long long rhs ) const<br>bool operator!=( const long long rhs ) const</td>          <td>Compares the value of the calling object with rhs. For example,  bool operator&lt;( const BigInteger&amp; rhs ) returns true if and only if the condition( (*this) &lt; rhs ) is true, i.e., when the integer value of the calling object is less than the integer value of rhs.</td>
+                <tr> <td>friend const BigInteger operator+( BigInteger a, const BigInteger&amp; b )<br>friend const BigInteger operator-( BigInteger a, const BigInteger&amp; b )<br>friend const BigInteger operator*( BigInteger a, const BigInteger&amp; b )<br>friend const BigInteger operator/( BigInteger a, const BigInteger&amp; b )<br>friend const BigInteger operator%( BigInteger a, const BigInteger&amp; b )<br>friend const BigInteger operator+( BigInteger a, long long b )<br>friend const BigInteger operator-( BigInteger a, long long b )<br>friend const BigInteger operator*( BigInteger a, long long b )<br>friend const BigInteger operator/( BigInteger a, long long b )<br>friend const BigInteger operator%( BigInteger a, long long b )</td>            <td>Returns the value of the integer arithmetic operation performed on the two operands, inside a BigInteger object. For example, BigInteger operator+( BigInteger a, const BigInteger&amp; b ) returns the integer value a+b inside a BigInteger object. The values a/0 and a/0 for all integer values of a are defined to be 0.</td>
+                <tr> <td>BigInteger&amp; operator+=( const BigInteger&amp; b )<br>BigInteger&amp; operator-=( const BigInteger&amp; b )<br>BigInteger&amp; operator*=( const BigInteger&amp; b )<br>BigInteger&amp; operator/=( const BigInteger&amp; b )<br>BigInteger&amp; operator%=( const BigInteger&amp; b )<br>BigInteger&amp; operator+=( long long b )<br>BigInteger&amp; operator-=( long long b )<br>BigInteger&amp; operator*=( long long b )<br>BigInteger&amp; operator/=( long long b )<br>BigInteger&amp; operator%=( long long b )</td>    <td>(Compound assignment operators) Perform a combination of an arithmetic operation and an assignment. For example, the statement a += b is equivalent to the statement a = a + b.</td>
+                <tr> <td>BigInteger&amp; operator++()<br>BigInteger operator++( int x )<br>BigInteger&amp; operator--()<br>BigInteger operator--( int x )</td>    <td>Function identically to the integer pre- and post-increment operators. Increment operators increase the value of the calling object by 1. Decrement operators decrease the value of the calling object by 1.</td>
+                <tr> <td>long long to_llong() const</td>          <td><i>Usage: object.to_llong()</i><br>If the value of the calling object is within the range [LLONG_MIN, LLONG_MAX], returns the value in a long long int type. Otherwise, the return value is undefined.</td>
+                <tr> <td>bool is_even() const</td>          <td><i>Usage: object.is_even()</i><br>Returns true if and only if the value of the calling object is even.</td>
+                <tr> <td>bool is_zero() const</td>          <td><i>Usage: object.is_zero()</i><br>Returns true if and only if the value of the calling object is zero.</td>
+                <tr> <td>bool is_negative() const</td>          <td><i>Usage: object.is_negative()</i><br>Returns true if and only if the value of the calling object is negative.</td>
+                <tr> <td>friend BigInteger abs( BigInteger&amp; a )</td>            <td><i>Usage: abs(a)</i><br>Returns a copy of the BigInteger a passed as parameter, with sign changed to positive.</td>
+                <tr> <td>friend BigInteger gcd( BigInteger a, BigInteger b )</td>    <td><i>Usage: gcd(a,b)</i><br>Returns a BigInteger object with value equal to the greatest common positive divisor of both a and b.</td>
+                <tr> <td>friend BigInteger lcm( BigInteger a, BigInteger b )</td>    <td><i>Usage: lcm(a,b)</i><br>Returns a BigInteger object with value equal to the least common positive multiple of both a and b.</td>
+                <tr> <td>friend BigInteger BI_FastExp( BigInteger, BigInteger, BigInteger )<br>friend BigInteger BI_FastExp( BigInteger, long long, BigInteger )<br>friend int BI_FastExp( BigInteger, long long, int )</td>          <td><i>Usage: BI_FastExp(base,exp,p)</i><br>Returns a BigInteger object with the value of ( (base^exp) mod p ). If p is zero or negative, or if exp is negative, returns a BigInteger object or int variable with value 0.</td>
+                <tr> <td>friend BigInteger BI_ModInv( BigInteger, BigInteger )</td>          <td><i>Usage: BI_ModInv(a,m)</i><br>Returns a BigInteger object with value equal to the modular multiplicative inverse of a in m if it exists, and 0 otherwise. If m is zero or negative, returns a BigInteger object with value 0.</td>
+                <tr> <td>friend BigInteger BI_Residue( BigInteger, BigInteger )</td>            <td><i>Usage: BI_Residue(a,m)</i><br>Returns a BigInteger object with value equal to the least positive residue of a modulo m. If m is zero or negative, returns a BigInteger object with value 0.</td>
+                <tr> <td>friend bool BI_Miller_Rabin( BigInteger,<br>int it [=32] )</td>    <td><i>Usage: BI_Miller_Rabin(a,c)</i><br>Performs the Miller-Rabin Strong Pseudoprime Test. Returns true if a is prime, and false with very high probability if a is composite. The parameter c represents the number of witness checks, its default value is 32, and it is limited to the range [32,128]. Any value outside this range will cause the program to default to the nearest value within the range.</td>
+              </table><br><br><br>
+              <i>EC_Point</i>
+              <br><br>
+              <table border="1" cellpadding="10">
+                <tr> <td style="width: 340px;">EC_Point()<br>EC_Point( int )<br>EC_Point( const BigInteger&amp;, const BigInteger&amp; )<br>EC_Point( const EC_Point&amp; )<br>EC_Point( std::pair&lt;BigInteger,BigInteger&gt;&amp; )</td>    <td>Creates a new object. If a parameter is passed, the value of the created object is equal to the parameter. The default constructor makes the point zero. The constructor with the single integer parameter sets the value to either zero (if the argument is 0) or an undefined non-zero point.</td>
+                <tr> <td>friend std::ostream&amp; operator&lt;&lt;( std::ostream&amp;, const EC_Point&amp; );</td>    <td>Writes the point coordinates to the ostream separated by a comma.</td>
+              </table><br><br><br>
+              <i>EC_Curve</i>
+              <br><br>
+              <table border="1" cellpadding="10">
+                <tr> <td style="width: 340px;">EC_Curve()<br>EC_Curve( const BigInteger&amp;, const BigInteger&amp;, const BigInteger&amp; )</td>    <td>Creates a new object. The first parameter is the order p of the field, and the second and third parameters are respectively the constants A and B of the short Weierstrass equation of an elliptic curve. The default constructor sets all three values to zero.</td>
+                <tr> <td>void EC_Validate()</td>            <td>Sets the private bool variable <i>valid</i> to true if p is prime and the discriminant of E is not zero, and false otherwise. Must be explicitly called after constructing a curve object.</td>
+                <tr> <td>bool EC_Validate_Point( EC_Point )</td>            <td>Returns true if the point argument passed is on the curve, false otherwise.</td>
+                <tr> <td>EC_Point EC_Add( EC_Point, EC_Point )</td>            <td>Returns the sum of the two argument points on the curve if defined. Otherwise returns zero.</td>
+                <tr> <td>EC_Point EC_Double( EC_Point )</td>            <td>Returns the scalar double of the argument point on the curve if defined. Otherwise returns zero.</td>
+                <tr> <td>EC_Point EC_Basic_Multiply( EC_Point,<br>BigInteger )</td>            <td>Returns the multiple of the first argument defined by scalar multiplication by the second argument if defined, otherwise returns zero. Takes exponential time (in the number of bits of p) to process execution.</td>
+                <tr> <td>EC_Point EC_Double_and_Add( EC_Point, BigInteger )</td>            <td>Returns the multiple of the first argument defined by scalar multiplication by the second argument if defined, otherwise returns zero. Takes polynomial time (in the number of bits of p) to process execution, by using the double and add algorithm.</td>
+                <tr> <td>EC_Point EC_WindowNAF( EC_Point, BigInteger, int )</td>            <td>Returns the multiple of the first argument defined by scalar multiplication by the second argument if defined, otherwise returns zero. Takes polynomial time (in the number of bits of p) to process execution, by using the windowed non-adjacent form point multiplication algorithm. Usually faster to process execution than the double and add algorithm. The third (int) parameter specifies the window size. A window size of 4 is the best selection for NIST recommended curves.</td>
+                <tr> <td>void EC_Find_NAF( int, std::vector&lt;int&gt;&amp;, std::vector&lt;int&gt;&amp; )</td>            <td>Helper function used by EC_WindowNAF. Converts an adjacent-form binary vector of integers to non-adjacent form, with the window size passed as the first argument. If the second argument vector contains the binary representation of an integer, the function clears and sets the third argument vector as the corresponding w-ary NAF vector.</td>
+                <tr> <td>EC_Point EC_Negative( EC_Point&amp; )</td>            <td>Returns the point on the curve over the field obtained by mirroring about the x-axis.</td>
+              </table>
+              
+            </div>
+            <div id="footer"></div>
+        </div>
+	</div>
+</div>
+</body>
+</html>

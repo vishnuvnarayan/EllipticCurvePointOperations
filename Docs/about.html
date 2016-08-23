@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<title>About - Point Multiplication on Elliptic Curves</title>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="Files/style.css" />
+</head>
+<body>
+<div id="mainContentArea">
+	<div id="contentBox">
+        <div id="title">Point Multiplication on Elliptic Curves</div>
+        
+        <div id="linkGroup">
+            <div class="link" id="linkact">About</div>
+            <div class="link"><a href="reference.html">Reference</a></div>
+            <div class="link"><a href="design.html">Design Details</a></div>
+        </div>
+        
+        <div id="blueBox"> 
+          <div id="header"></div>
+          <div class="contentTitle">CO685 (The Mathematics of Public Key Cryptography) - Course Project</div>
+            <div class="pageContent">
+              
+              This document contains information about the course project titled "Point Multiplication on Elliptic Curves", submitted for the CO685 course for the Fall 2015 term.
+              The project involves implementing an arbitrary-length integer handling class, an elliptic curve point operations class and an executable driver program.
+              <br><br>
+              <b>Project Information:</b><br>
+              <table style="border:0px">
+                <tr> <td>Title</td>     <td>&emsp;</td><td>Point Multiplication on Elliptic Curves</td>
+                <tr> <td>Course</td>    <td>&emsp;</td><td>University of Waterloo CO 685 - The Mathematics of Public Key Cryptography</td>
+                <tr> <td>Instructor</td><td>&emsp;</td><td>David Jao</td>
+                <tr> <td>Term</td>      <td>&emsp;</td><td>Fall 2015</td>
+                <tr> <td>Submitted</td> <td>&emsp;</td><td>December 21, 2015</td>
+                <tr> <td>Author</td>    <td>&emsp;</td><td>Vishnu V Narayan<br>M.Math. C&amp;O<br>20638622</td>
+              </table>
+              <br><br>
+              
+              <hr>
+              
+              The <i><b>Reference</b></i> tab contains a reference manual and code-related information, and the <i><b>Design Details</b></i> tab contains information about design decisions
+              taken during implementation.
+              <br><br><br>
+              <hr>
+              
+              <b>Implemented classes and algorithms:</b><br>
+              <ul>
+                <li> BigInteger class - to store and perform arithmetic operations on arbitrarily large signed integers.
+                <li> ECPO class - to validate elliptic curves and points on those curves, and perform elliptic curve point multiplication and related algorithms.
+                    <br>Point multiplication algorithms implemented and analysed:
+                <ul>
+                    <li> Brute-force point multiplication (repeated point addition)
+                    <li> Double-and-add
+                    <li> window-NAF
+                </ul>
+                Note:
+                <ul>
+                    <li> Sliding-window-NAF was <b>deliberately omitted</b> - see Design Details.
+                    <li> The Montgomery ladder method from Wikipedia appears to be incorrect - and the theory in "Guide to Elliptic Curve Cryptography" is beyond what we have studied in the course. This has been omitted as well.
+                </ul>
+              </ul>
+              
+              <br>
+              <hr>
+              <b>References:</b>
+              <ul>
+              <li>Hoffstein, Pipher, and Silverman - "An Introduction to Mathematical Cryptography" [<a href="http://link.springer.com/book/10.1007%2F978-1-4939-1711-2">http://link.springer.com/book/10.1007%2F978-1-4939-1711-2</a>]
+              <li>Hankerson, Menezes and Vanstone - "Guide to Elliptic Curve Cryptography" [<a href="http://cacr.uwaterloo.ca/ecc/">http://cacr.uwaterloo.ca/ecc/</a>]
+                  <br> >> [Link to pdf : <a href="http://cs.ucsb.edu/~koc/ecc/docx/GuideEllipticCurveCryptography.pdf">http://cs.ucsb.edu/~koc/ecc/docx/GuideEllipticCurveCryptography.pdf</a>]
+              <li>D.E. Knuth (1969) - "The Art of Computer Programming, vol 2" [<a href="http://dl.acm.org/citation.cfm?id=270146">http://dl.acm.org/citation.cfm?id=270146</a>]
+              <li>Wolfram Mathworld - "Karatsuba Multiplication" [<a href="http://mathworld.wolfram.com/KaratsubaMultiplication.html">http://mathworld.wolfram.com/KaratsubaMultiplication.html</a>]
+              <li>A.A. Karatsuba (1995) - "The Complexity of Computations" [<a href="http://www.ccas.ru/personal/karatsuba/divcen.pdf">http://www.ccas.ru/personal/karatsuba/divcen.pdf</a>]
+              </ul>
+              
+            </div>
+            <div id="footer"></div>
+        </div>
+	</div>
+</div>
+</body>
+</html>

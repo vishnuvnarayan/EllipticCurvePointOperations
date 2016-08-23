@@ -1,0 +1,168 @@
+html
+{
+    overflow: scroll;
+}
+                         
+body
+{
+    background: $ffffff;
+    height: 99%;
+    margin: 0;
+    padding: 0;
+    line-height: 150%;
+    text-align: center;
+}
+
+*
+{
+    font-size: 10pt; 
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    color: #000000;
+    text-align: left;
+}
+
+#mainContentArea
+{
+    margin: 0 auto 0 auto; 
+    display: table; 
+    height: 99%;  
+    position: relative; 
+    overflow: hidden; 
+    width: 900px;
+}
+
+.link
+{
+    width:120px;
+    margin-right:10px;
+    float: left;
+    margin-top:20px;
+    text-align:center;
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    position:relative; bottom:0px;
+}
+
+#linkact
+{
+    width:120px;
+    margin-right:10px;
+    float: left;
+    margin-top:20px;
+    text-align:center;
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    background-image:url(tab.gif);
+    position:relative; bottom:0px;
+}
+
+a:hover
+{
+    color:#bb5544;
+}
+
+tr
+{
+    vertical-align:top;
+}
+
+a
+{
+    text-decoration:none;
+}
+
+.link a
+{
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:12px;
+    font-weight:bold;
+}
+
+#linkGroup
+{
+    margin-right:0px;
+    height:40px;
+    width:900px;
+}
+
+#title
+{
+    width:440px;
+    height:40px;
+    margin-left:40px;
+    margin-top:15px;
+    color:#213E74;
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size:14pt;
+    font-weight:bold;
+    text-align:left;
+    float:left;
+}
+
+.contentTitle
+{
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    color:#213E74;
+    font-size:14pt;
+    margin-left:40px;
+    margin-right:40px;
+    margin-top:10px;
+    margin-bottom:20px;
+    width:833px;
+    text-align: left;
+}
+
+.pageContent
+{
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    color:#000000;
+    font-size:10pt;
+    margin-left:40px;
+    margin-right:40px;
+    width:820px;
+    text-align: justify;
+}
+
+#blueBox
+{
+    position: absolute;
+    vertical-align: middle;
+    background-color:#E7EDF8;
+    width:900px;
+    clear:both;
+}
+
+#header
+{
+    width:900px;
+    height:20px;
+    background-color:#FFFFFF;
+    background-image:url(header.gif);
+    background-repeat:no-repeat;
+}
+
+#footer
+{
+    width:900px;
+    height:20px;
+    background-color:#FFFFFF;
+    background-image:url(footer.gif);
+    background-repeat:no-repeat;
+    text-align:center;
+    padding-right:10px;
+    color:#BDCDEC;
+    padding-bottom: 60px;
+}
+
+#footer a
+{
+    color:#BDCDEC;
+}
+
+#contentBox
+{
+    margin-top:25px;
+}
+
+html, body
+{
+    text-align: center;
+}
